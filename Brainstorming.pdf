@@ -34,3 +34,26 @@ SHOPPING LIST:ingredient_id, user_id, recipe_id
 <!-- so I know what i need to make a recipe -->
 OCCASIONS: occasions_id, servings, recipe_id, desc
 <!-- i can search by type of recipe or serving size for an event -->
+
+
+CREATE TABLE users(
+  id SERIAL PRIMARY KEY,
+  email VARCHAR(255) NOT NULL,
+  password VARCHAR(255) NOT NULL
+  );
+
+  CREATE TABLE shopping_list(
+  id SERIAL PRIMARY KEY,
+  user_id INTEGER,
+  ingredients_id INTEGER
+  );
+
+  CREATE TABLE recipes(
+  id SERIAL PRIMARY KEY,
+  user_id INTEGER,
+  description TEXT,
+  private BOOLEAN,
+  instructions TEXT
+  );
+
+  
