@@ -1,21 +1,36 @@
 Food App
 
-STEP 1 & 2:
+STEP 1 & 2 & 4:
 
 User= id, email, password
-Recipes= id, user id, servings, ingredients id, directions, pictures 
-Ingredients= id, user id
-Ingredients(have/need)= id, user id, ingredients list,
-Occasions= id, user id, servings recipe id
-Publi/private= recipe id, user id
+Recipes= id, user id, servings, ingredients id, directions
+Ingredients= id, user id, description
+<!-- Ingredients(have/need)= id, user id, ingredients list, -->
+Occasions= id, user id, servings, recipe id
+<!-- Publi/private= recipe id, user id -->
 
-STEP 3:
+STEP 3: Relationships
 
-ONE-TO-ONE: user<>ingredients, user<>public/private 
+ONE-TO-ONE:  
 <!-- Each of these have one connection category on each side of the link -->
 
-ONE-TO-MANY: user<>recipes, user<>ingredients(have/need), user<>occasions, recipe<>public/private 
+ONE-TO-MANY: user<>recipes, user<>ingredients(have/need), user<>occasions, recipe<>public/private, user<>ingredients, recipes<>public/private 
 <!-- Each of these have one connection on one side, and multiple on the other. like one user and multiple ingredients. -->
 
 MANY-TO-MANY:recipes<>ingredients, recipes<>ingredients(have/need), recipes<>occasions
+<!-- These all have multiple connection between each table -->
 
+STEP 3: Columns
+
+USER: user_id, email, password
+<!-- to identify users -->
+RECIPES: recipe_id, user_id, servings, ingredients_id, directions, desc, private(boolean)
+<!-- to search recipes by different requirements -->
+INGREDIENTS: ingredients_id, user_id, desc, need(boolean)
+<!-- to store ingredients by user -->
+DIRECTIONS:recipe_id, desc, user_id
+<!-- to save space on recipes table -->
+SHOPPING LIST:ingredient_id, user_id, recipe_id
+<!-- so I know what i need to make a recipe -->
+OCCASIONS: occasions_id, servings, recipe_id, desc
+<!-- i can search by type of recipe or serving size for an event -->
