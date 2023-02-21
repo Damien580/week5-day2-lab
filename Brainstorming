@@ -1,0 +1,21 @@
+Food App
+
+STEP 1 & 2:
+
+User= id, email, password
+Recipes= id, user id, servings, ingredients id, directions, pictures 
+Ingredients= id, user id
+Ingredients(have/need)= id, user id, ingredients list,
+Occasions= id, user id, servings recipe id
+Publi/private= recipe id, user id
+
+STEP 3:
+
+ONE-TO-ONE: user<>ingredients, user<>public/private 
+<!-- Each of these have one connection category on each side of the link -->
+
+ONE-TO-MANY: user<>recipes, user<>ingredients(have/need), user<>occasions, recipe<>public/private 
+<!-- Each of these have one connection on one side, and multiple on the other. like one user and multiple ingredients. -->
+
+MANY-TO-MANY:recipes<>ingredients, recipes<>ingredients(have/need), recipes<>occasions
+
