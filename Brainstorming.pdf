@@ -37,23 +37,28 @@ OCCASIONS: occasions_id, servings, recipe_id, desc
 
 
 CREATE TABLE users(
-  id SERIAL PRIMARY KEY,
+  user_id SERIAL PRIMARY KEY,
   email VARCHAR(255) NOT NULL,
   password VARCHAR(255) NOT NULL
   );
 
+CREATE TABLE ingredients(
+  ingredient_id SERIAL PRIMARY KEY,
+  description TEXT,
+  need BOOLEAN
+  );
+  
   CREATE TABLE shopping_list(
-  id SERIAL PRIMARY KEY,
-  user_id INTEGER,
-  ingredients_id INTEGER
+  list_id SERIAL PRIMARY KEY,
+  user_id INTEGER NOT NULL REFERENCES users(user_id),
+  ingredients_id INTEGER NOT NULL REFERENCES ingredients(ingredient_id)
   );
 
   CREATE TABLE recipes(
-  id SERIAL PRIMARY KEY,
-  user_id INTEGER,
+  recipe_id SERIAL PRIMARY KEY,
+  user_id INTEGER NOT NULL REFERENCES users(user_id),
   description TEXT,
   private BOOLEAN,
   instructions TEXT
   );
 
-  
